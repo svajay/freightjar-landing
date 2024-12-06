@@ -1,0 +1,442 @@
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #f4c11c;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.display-none {
+  display: none !important;
+}
+
+.text-p-policy {
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .quotes-form {
+    height: 90%;
+  }
+  .quotes-form-p-2 {
+    margin: 0%;
+    height: 2%;
+  }
+}
+
+:root {
+  --primary-color: #f4c11c;
+  --secondary-color: #004aad;
+  --bg-light: #f5f5f5;
+}
+
+.light-bg {
+  background-color: var(--bg-light);
+}
+
+.primary-bg {
+  background-color: var(--primary-color);
+}
+
+.text-p {
+  color: var(--primary-color);
+}
+.text-s {
+  color: var(--secondary-color);
+}
+
+.search-button {
+  text-decoration: none;
+}
+
+.extra {
+  border: 0;
+  box-shadow: none;
+}
+.body-blur {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input-bg {
+  background-color: #eeeeee;
+}
+
+.search-bg {
+  background-color: var(--secondary-color);
+}
+
+.sel-active {
+  color: var(--primary-color);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.nav-add {
+  background-color: var(--primary-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* height: 4.8rem; */
+}
+
+.footer-add {
+  background-color: var(--secondary-color);
+}
+
+/*********** index (home) screen css  **********************/
+
+/* port api data search container css */
+#fcl-d-list,
+#fcl-o-list {
+  max-height: 150px;
+  height: auto;
+  overflow-y: auto;
+  max-width: 100%;
+}
+
+#fcl-d-list li,
+#fcl-o-list li {
+  border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 769.99px) {
+  #fcl-d-list,
+  #fcl-o-list {
+    overflow-y: auto;
+    max-width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  #fcl-d-list,
+  #fcl-o-list {
+    overflow-y: auto;
+    max-width: 55%;
+  }
+}
+
+/* port api data search container css--end */
+
+/* Airport api data search container css--start */
+
+#air-o-list,
+#air-d-list {
+  max-height: 150px;
+  height: auto;
+  overflow-y: auto;
+  max-width: 16%;
+}
+
+#air-o-list li,
+#air-d-list li {
+  border-bottom: 2px solid #ccc;
+}
+
+@media (max-width: 769.99px) {
+  #air-o-list #air-d-list {
+    overflow-y: auto;
+    max-width: 18%;
+  }
+}
+@media (max-width: 767px) {
+  #air-o-list,
+  #air-d-list {
+    overflow-y: auto;
+    max-width: 50%;
+  }
+}
+
+/* container type css  */
+.list-items {
+  border-bottom: 2px solid #ccc;
+  max-height: 180px;
+  height: auto;
+}
+#container-type-list {
+  max-height: 180px;
+  height: auto;
+  overflow-y: auto;
+}
+
+/* container type css end */
+
+/* Airport api data search container css--end */
+
+.signup-container {
+  background-color: var(--primary-color);
+  height: 90vh;
+}
+@media (max-width: 767px) {
+  .signup-container {
+    height: auto;
+  }
+}
+
+.login-text {
+  color: var(--primary-color);
+}
+
+.main-slider {
+  background: url("/assests/slider/ship4.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+}
+
+@media (max-width: 767px) {
+  .main-slider {
+    height: auto;
+  }
+}
+@media (min-width: 768px) {
+  .main-slider {
+    height: 80vh;
+  }
+}
+
+.f-xs {
+  font-size: x-small;
+}
+
+.f-s {
+  font-size: small;
+}
+.location-text-p {
+  /* margin-left: 12px;   */
+}
+/* vertical text slider */
+
+.owl-carousel {
+  max-width: 400px;
+}
+
+/* vertical text slider end */
+
+/* suggestion area */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+.list-over {
+  overflow-y: scroll;
+}
+
+.list {
+  height: 20vh;
+  background-color: #ffffff;
+  border-radius: 0 0 5px 5px;
+}
+.list-items {
+  padding: 0px 20px;
+}
+.list-items:hover {
+  background-color: #dddddd;
+}
+/* suggestion area end */
+.phone-signUp {
+  width: 80%;
+}
+
+.mb-u {
+  margin-bottom: unset;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  .phone-signUp {
+    width: 95%;
+  }
+
+  .phone-mb-2 {
+    margin-bottom: 10px;
+  }
+  .submit-btn {
+    margin-top: 20px;
+    padding: 20px 0;
+  }
+  .h-auto {
+    height: auto !important;
+  }
+}
+
+/*******   reset password screen css *******/
+
+.reset-pass-container {
+  background-color: var(--primary-color);
+  height: 90vh;
+}
+@media (max-width: 767px) {
+  .reset-pass-container {
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .reset-pass-container {
+    height: auto;
+  }
+}
+
+/* slider  start */
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  animation: scroll 10s linear infinite;
+}
+
+.logo {
+  flex: 0 0 auto;
+  margin: 0 20px;
+}
+
+.logo img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+/* slider end */
+
+/* 4 step */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #dee2e6;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item::before,
+.timeline-item::after {
+  content: "";
+  display: table;
+}
+
+.timeline-item::after {
+  clear: both;
+}
+
+.timeline-item .timeline-panel {
+  position: relative;
+  width: 45%;
+  padding: 2rem;
+  border: 1px solid #dee2e6;
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.timeline-item .timeline-image {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -1.5rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.timeline-item .timeline-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.timeline-item.left .timeline-panel {
+  float: left;
+}
+
+.timeline-item.left .timeline-panel::before {
+  right: auto;
+  left: -15px;
+  border-left-width: 0;
+  border-right-width: 15px;
+}
+
+.timeline-item.right .timeline-panel {
+  float: right;
+}
+
+.left-line {
+  border-left: 4px solid var(--primary-color);
+}
+
+.cta {
+  background-image: url("../cta\ banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cta-btn {
+  background-color: white;
+  color: black;
+}
+
+.f-top {
+  background-color: var(--primary-color);
+}
+
+.f-bottom {
+  background-color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .arrow {
+    display: none;
+  }
+}
+
+/* slider */
+
+.form-control {
+  padding: 0 !important;
+}
+
+.nw {
+  padding-left: 5px !important;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freight Jar</title>
+   <link rel="icon" type="image/x-icon" href="/assests/favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  
+      <!-- Microsoft Clarity Code  -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "mmnbp39u5l");
+</script>
+</head>
+<body>
+  <div id="loading" style="display: block;">
+    <!-- Loader HTML code goes here -->
+    <!-- <img src="loader.gif" alt="Loading..." /> -->
+  </div>
+  <div id="content" style="display: none;">
+    <div id="decryptedText"></div>
+    <div>
+      <form id="createCustomer" onsubmit="return validateForm()" >
+        <div class="mb-3">
+          <label for="fullname" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullname" />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" />
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="number" class="form-control" id="phone" />
+        </div>
+        <div class="mb-3">
+          <label for="companyname" class="form-label">Company Name</label>
+          <input type="text" class="form-control" id="companyname" />
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitButton" style="display: none;">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script src="/assests/js/create-icici-customer.js"></script>
+  <script>
+      const form = document.querySelector("#createIciciCustomer");
+      const submitButton = document.querySelector("#submit");
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxNujtd1YByqdbTCijADib3-OVVnjo27T-wAtC3Z733B0lBOjoeqUGf_LzDDNkpBSXIWw/exec";
+
+      form.addEventListener("submit", (e) => {
+        submitButton.disabled = true;
+        e.preventDefault();
+        let requestBody = new FormData(form);
+        fetch(scriptURL, { method: "POST", body: requestBody })
+          .then((response) => {
+            // alert("Success!", response);
+            submitButton.disabled = false;
+          })
+          .catch((error) => {
+            alert("Error!", error.message);
+            submitButton.disabled = false;
+          });
+      });
+    </script>
+</body>
+</html>
+
+
+    

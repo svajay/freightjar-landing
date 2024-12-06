@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Freight Jar</title>
+    <link rel="icon" type="image/x-icon" href="/assests/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.carousel.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.theme.default.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+    <!-- custom styles -->
+    <link rel="stylesheet" href="/assests/css/style.css" />
+    <!-- Microsoft Clarity Code  -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "mmnbp39u5l");
+    </script>
+  </head>
+  <body>
+
+    <!-- loader start -->
+    <div
+      id="loader"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div class="spinner"></div>
+    </div>
+
+    <!-- loader end -->
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg nav-add animated slideInDown">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="/assests/logo.png" alt="Bootstrap" height="64" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <a href="https://app.freightjar.com/" class="btn btn-primary me-4"
+            >Login</a
+          >
+          <a href="/signup.html" class="btn btn-success">Signup</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="container-fluid main-slider animated">
+        <div class="container mb-5 d-flex flex-column justify-content-center">
+          <div class="container">
+            <div class="owl-carousel pt-5 text-white animated fadeIn">
+              <h1 class="fs-1">Rate Search</h1>
+              <h1 class="fs-1">Shipment Tracking</h1>
+              <h1 class="fs-1">Documentation Filing</h1>
+            </div>
+            <div class="text-p" style="margin-top: -18px">
+              <h1>Made Easy</h1>
+            </div>
+          </div>
+          <div class="container pt-5">
+            <div
+              class="overflow-hidden bg-white rounded-2 my-3"
+              style="max-width: 400px; width: 100%; margin-left: 0"
+            >
+              <div class="row py-2">
+                <div
+                  id="fclActive"
+                  class="col border-end border-2 pointer text-center fw-bold"
+                >
+                  <i id="fcl" class="fa-solid fa-box pe-2"></i>FCL
+                </div>
+                <div
+                  id="lclActive"
+                  class="col border-end border-2 pointer text-center fw-bold"
+                  data-aos-delay="100"
+                >
+                  <i id="lcl" class="fa-solid fa-box-open pe-2"></i>LCL
+                </div>
+                <div id="airActive" class="col pointer text-center fw-bold">
+                  <i id="air" class="fa-solid fa-plane pe-2"></i>AIR
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-hidden container input-bg rounded-2 my-1">
+              <!-- ports start -->
+              <form action="quotes.html">
+                <div
+                  class="row border-2 border-top p-1"
+                  id="portsSearchContainer"
+                >
+                  <!-- ports type data -->
+                  <div class="col-12 col-md py-1">
+                    <div class="input-bg rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">FROM PORT</p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="fclShortNameOrigin"
+                        placeholder="origin..."
+                        required
+                      />
+
+                      <ul id="fcl-o-list" class="list position-absolute"></ul>
+                      <p
+                        class="mb-u fw-medium location-text-p"
+                        id="fclFullNameOrigin"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md py-1">
+                    <div class="input-bg px-2 py-1 rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">TO PORT</p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="fclShortNameDestination"
+                        placeholder="destination..."
+                        required
+                      />
+                      <ul id="fcl-d-list" class="list position-absolute"></ul>
+                      <p
+                        class="mb-u fw-medium location-text-p"
+                        id="fclFullNameDestination"
+                      ></p>
+                    </div>
+                  </div>
+                  <!-- container type data  -->
+                  <div id="containerInput" class="col-12 col-md py-1">
+                    <div class="input-bg px-2 py-1 rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">
+                        Container Type
+                      </p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="containerType"
+                        placeholder="container type..."
+                        required
+                      />
+                      <ul
+                        id="container-type-list"
+                        class="list position-absolute"
+                      ></ul>
+                      <p
+                        class="mb-u fw-medium location-text-p"
+                        id="containerFullName"
+                      ></p>
+                    </div>
+                  </div>
+                  <!-- Weight (Kg) -->
+                  <div id="weightInput" class="col-12 col-md py-1 display-none">
+                    <div class="input-bg px-2 py-1 rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">Weight</p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="weightShortNameOrigin"
+                        placeholder="weight..."
+                        required
+                      />
+                      <ul class="list position-absolute"></ul>
+                      <p class="mb-u fw-medium location-text-p">Kilograms</p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-2 py-1">
+                    <button
+                      style="width: 100%; height: 100%"
+                      type="submit"
+                      class="btn btn-primary fs-2 text-white fw-semibold mb-u search-bg p-2 rounded d-flex justify-content-center align-items-center"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <!-- ports end -->
+              <!--  airports start  -->
+              <form action="quotes.html">
+                <div
+                  class="row border-2 border-top display-none p-1"
+                  id="airportsSearchContainer"
+                >
+                  <div class="col-12 col-md py-1">
+                    <div class="input-bg rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">FROM</p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="airShortNameOrigin"
+                        placeholder="origin..."
+                        required
+                      />
+                      <ul id="air-o-list" class="list position-absolute"></ul>
+                      <p
+                        class="mb-u fw-medium location-text-p"
+                        id="airFullNameOrigin"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md py-1">
+                    <div class="input-bg px-2 py-1 rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">TO</p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="airShortNameDestination"
+                        placeholder="destination..."
+                        required
+                      />
+                      <ul id="air-d-list" class="list position-absolute"></ul>
+                      <p
+                        class="mb-u fw-medium location-text-p"
+                        id="airFullNameDestination"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md py-1">
+                    <div class="input-bg px-2 py-1 rounded h-100">
+                      <p class="text-uppercase mb-1 fs-6 text">Weight</p>
+                      <input
+                        class="form-control text-black border-bottom border-2 fw-bold"
+                        style="background: none; border: 0"
+                        type="text"
+                        id="airWeightShortNameOrigin"
+                        placeholder="weight..."
+                        required
+                      />
+                      <ul class="list position-absolute"></ul>
+                      <p class="mb-u fw-medium location-text-p">Kilograms</p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-2 py-1">
+                    <button
+                      style="width: 100%; height: 100%"
+                      type="submit"
+                      class="btn btn-primary fs-2 text-white fw-semibold mb-u search-bg p-2 rounded d-flex justify-content-center align-items-center"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <!-- airports end -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="container mt-6 my-5 py-5 rounded-2 light-bg d-flex animated fadeInUp"
+        data-aos="fade-up"
+        style="width: 95%"
+      >
+        <div class="row">
+          <div class="col-md-8" data-aos="fade-up">
+            <h2 class="fw-bold fs-1 mb-3">
+              <span class="text-p">24+ Years</span> of Global Trade Experience
+            </h2>
+            <p class="fs-5">
+              FreightJar is a proprietary digital product of Tiger Logistics, a
+              BSE-Listed leading global logistics company in India handling 15+
+              industry verticals with PAN India operations and widespread global
+              network.
+            </p>
+          </div>
+          <div class="col-md-4 left-line" data-aos="fade-up">
+            <img class="img-fluid px-4" src="./assests/tiger-logo.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <h2 class="fw-bold fs-1 text-center mb-5">
+          <span class="text-p">Trusted</span> By Leading Organizations
+        </h2>
+        <div class="container mt-5">
+          <div class="logo-slider">
+            <div class="logo-track">
+              <div class="logo" data-aos="fade-up" data-aos-delay="0">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (1).png"
+                  alt="Logo 1"
+                />
+              </div>
+
+              <div class="logo" data-aos="fade-up" data-aos-delay="700">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (8).png"
+                  alt="Logo 8"
+                />
+              </div>
+
+              <div class="logo" data-aos="fade-up" data-aos-delay="900">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (10).png"
+                  alt="Logo 10"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1000">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (11).png"
+                  alt="Logo 11"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1100">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (12).png"
+                  alt="Logo 12"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1200">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (13).png"
+                  alt="Logo 13"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1300">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (14).png"
+                  alt="Logo 14"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1400">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (15).png"
+                  alt="Logo 15"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1500">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (16).png"
+                  alt="Logo 16"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1600">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (17).png"
+                  alt="Logo 17"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1700">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (18).png"
+                  alt="Logo 18"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1800">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (19).png"
+                  alt="Logo 19"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="1900">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (20).png"
+                  alt="Logo 20"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2000">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (21).png"
+                  alt="Logo 21"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2100">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (22).png"
+                  alt="Logo 22"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2200">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (23).png"
+                  alt="Logo 23"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2300">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (24).png"
+                  alt="Logo 24"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2400">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (25).png"
+                  alt="Logo 25"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2500">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (26).png"
+                  alt="Logo 26"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2600">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (27).png"
+                  alt="Logo 27"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2700">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (28).png"
+                  alt="Logo 28"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2800">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (29).png"
+                  alt="Logo 29"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="2900">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (30).png"
+                  alt="Logo 30"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3000">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (31).png"
+                  alt="Logo 31"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3100">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (32).png"
+                  alt="Logo 32"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3200">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (33).png"
+                  alt="Logo 33"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3300">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (34).png"
+                  alt="Logo 34"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3400">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (35).png"
+                  alt="Logo 35"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3500">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (36).png"
+                  alt="Logo 36"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3600">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (37).png"
+                  alt="Logo 37"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3700">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (38).png"
+                  alt="Logo 38"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3800">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (39).png"
+                  alt="Logo 39"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="3900">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (40).png"
+                  alt="Logo 40"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4000">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (41).png"
+                  alt="Logo 41"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4100">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (42).png"
+                  alt="Logo 42"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4200">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (43).png"
+                  alt="Logo 43"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4300">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (44).png"
+                  alt="Logo 44"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4400">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (45).png"
+                  alt="Logo 45"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4500">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (46).png"
+                  alt="Logo 46"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4600">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (47).png"
+                  alt="Logo 47"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4700">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (48).png"
+                  alt="Logo 48"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4800">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (49).png"
+                  alt="Logo 49"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="4900">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (50).png"
+                  alt="Logo 50"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="5000">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (51).png"
+                  alt="Logo 51"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="5100">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (52).png"
+                  alt="Logo 52"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="5200">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (53).png"
+                  alt="Logo 53"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="5300">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (54).png"
+                  alt="Logo 54"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="5400">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (55).png"
+                  alt="Logo 55"
+                />
+              </div>
+              <div class="logo" data-aos="fade-up" data-aos-delay="5500">
+                <img
+                  class="fab"
+                  src="./assests/company logo/logo (56).png"
+                  alt="Logo 56"
+                />
+              </div>
+
+              <!-- Repeat logos for infinite effect -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <h2 class="fw-bold fs-1 text-center mb-5">
+          <span class="text-p">End-to-End</span> Digital Solutions
+        </h2>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex" data-aos="fade-up">
+            <div class="card shadow mb-5 bg-body-tertiary rounded">
+              <img src="./assests/fcl.webp" class="card-img-top" alt="..." />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">FCL Shipping</h5>
+                <p class="card-text">
+                  Get Instant Pricing & Booking confirmation for FCL Shipments
+                  with FreightJar 2.0. Manage documentation & track shipments
+                  seamlessly from factory to destination
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-4 d-flex align-items-center justify-content-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="card shadow mb-5 bg-body-tertiary rounded">
+              <img src="./assests/lcl.webp" class="card-img-top" alt="..." />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">LCL Shipping</h5>
+                <p class="card-text">
+                  Group your LCL shipments with the most competitive rates for
+                  low-volume shipments. Find simpler and more transparent
+                  processes to manage and track your shipments.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="card shadow mb-5 bg-body-tertiary rounded">
+              <img
+                src="./assests/air-freight.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Air Freight</h5>
+                <p class="card-text">
+                  Request Cargo rates from leading carriers with transparent,
+                  real-time pricing. Manage & track your air cargo in a handy
+                  and robust digital interface.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="card shadow mb-5 bg-body-tertiary rounded">
+              <img
+                src="./assests/cold-chain.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Cold Chain</h5>
+                <p class="card-text">
+                  Book climate-controlled cold chain transportation,
+                  warehousing, and shipping throughout the journey of your cargo
+                  for seamless delivery.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="card shadow mb-5 bg-body-tertiary rounded">
+              <img
+                src="./assests/domestic-transportation.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Domestic Transportation</h5>
+                <p class="card-text">
+                  Add Road and rail transportation as well as integrated
+                  multimodal journeys to your shipments and simplify complex
+                  journeys from factory to destination.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex" data-aos="fade-up" data-aos-delay="500">
+            <div class="card shadow mb-5 bg-body-tertiary rounded">
+              <img
+                src="./assests/cargo-value.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Cargo Value Finance</h5>
+                <p class="card-text">
+                  Manage your cash flow and increase business value by getting
+                  up to 90% of your export value financed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <a
+            href="https://app.freightjar.com/"
+            target="_blank"
+            class="btn btn-lg rounded-4 btn-primary"
+          >
+            Request a Demo
+          </a>
+        </div>
+      </section>
+
+      <section
+        class="container my-5 py-5 d-flex animated fadeIn"
+        data-aos="fade-up"
+        style="width: 95%"
+      >
+        <div class="row">
+          <div class="col-md-8 left-line" data-aos="fade-up">
+            <h2 class="fw-bold fs-1 mb-3">
+              <span class="text-p">Book & Manage</span> Your Global Shipments
+              with Ease
+            </h2>
+            <p class="fs-5">
+              Save Time, Optimise your Costs, and gain full control of your
+              shipments at the click of a button with the FreightJar 2.0
+              dashboard.
+            </p>
+          </div>
+          <div class="col-md-4" data-aos="fade-up">
+            <img class="img-fluid px-4" src="./assests/logo.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <div class="row flex-column-reverse flex-lg-row">
+          <div class="col-md-6">
+            <img
+              class="img-fluid px-4 shadow p-3 mb-5 bg-body-tertiary rounded"
+              src="./assests/rates.png"
+              alt=""
+              data-aos="fade-up"
+            />
+          </div>
+          <div class="col-md-6" data-aos="fade-up">
+            <h2 class="fw-bold fs-2 left-line px-2 mb-3">
+              Competitive Freight Rates
+            </h2>
+            <p class="fs-5">
+              Save Time & Energy finding competitive freight rates from multiple
+              forwarders in the market.
+            </p>
+            <a
+              href="https://app.freightjar.com/"
+              target="_blank"
+              class="btn btn-primary btn-lg rounded-4"
+            >
+              Create a Free Account
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="container my-5 py-5 d-flex animated fadeIn"
+        data-aos="fade-up"
+      >
+        <div class="row">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2 class="fw-bold fs-2 left-line px-2 mb-3">
+              Shipment Visibility
+            </h2>
+            <p class="fs-5">
+              Track your global shipments from your Factory to Destination with
+              our end-to-end shipment tracking technology.
+            </p>
+            <a
+              href="https://app.freightjar.com/"
+              target="_blank"
+              class="btn btn-primary btn-lg rounded-4"
+            >
+              Create a Free Account
+            </a>
+          </div>
+
+          <div class="col-md-6" data-aos="fade-up">
+            <img
+              class="img-fluid px-4 shadow p-3 mb-5 bg-body-tertiary rounded"
+              src="./assests/shipping tracking.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <div class="row flex-column-reverse flex-lg-row">
+          <div class="col-md-6" data-aos="fade-up">
+            <img
+              class="img-fluid px-4 shadow p-3 mb-5 bg-body-tertiary rounded"
+              src="./assests/docs.png"
+              alt=""
+            />
+          </div>
+          <div class="col-md-6" data-aos="fade-up">
+            <h2 class="fw-bold fs-2 left-line px-2 mb-3">Easy Documentation</h2>
+            <p class="fs-5">
+              All your shipments documents with live status at one place. Avoid
+              multiple calls and emails and follow ups.
+            </p>
+            <a
+              href="https://app.freightjar.com/"
+              target="_blank"
+              class="btn btn-primary btn-lg rounded-4"
+            >
+              Create a Free Account
+            </a>
+          </div>
+        </div>
+      </section>
+      <hr class="container" />
+
+      <section class="container py-5 my-5 animated fadeIn" data-aos="fade-up">
+        <h2 class="fw-bold fs-1 text-center mb-5">
+          <span class="text-p">4 Easy Steps</span> to Book & Manage Your Global
+          Shipments
+        </h2>
+
+        <div class="row">
+          <div class="col-lg-3 col d-flex">
+            <div
+              class="step w-100 d-flex align-items-center shadow p-3 mb-5 bg-body-tertiary rounded gap-3 animated fadeInUp delay-1s"
+              data-aos="fade-up"
+            >
+              <div class="step-icon">
+                <img src="./assests/search.png" alt="" />
+              </div>
+              <div class="step-desc">
+                <h3 class="fw-bold fs-3">Search</h3>
+                <p class="card-text">
+                  Find Rates & Get Quotation for your global shipments
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 d-flex justify-content-end">
+            <img
+              class="arrow"
+              height="100px"
+              src="./assests/arrow.png"
+              alt=""
+              data-aos="fade-up"
+            />
+          </div>
+          <div class="col-lg-3">
+            <div
+              class="step w-100 d-flex align-items-center shadow p-3 mb-5 bg-body-tertiary rounded gap-3 animated fadeInUp delay-2s"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="step-icon">
+                <img src="./assests/book.png" alt="" />
+              </div>
+              <div class="step-desc">
+                <h3 class="fw-bold fs-3">Book</h3>
+                <p class="card-text">Confirm your booking and proceed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3 d-flex justify-content-end">
+            <img
+              class="arrow"
+              height="100px"
+              src="./assests/arrow.png"
+              alt=""
+              data-aos="fade-up"
+            />
+          </div>
+          <div class="col-lg-3 d-flex">
+            <div
+              class="step w-100 d-flex align-items-center shadow p-3 mb-5 bg-body-tertiary rounded gap-3 animated fadeInUp delay-3s"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="step-icon">
+                <img src="./assests/manage.png" alt="" />
+              </div>
+              <div class="step-desc">
+                <h3 class="fw-bold fs-3">Manage</h3>
+                <p class="card-text">
+                  Upload all documents, get notifications.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3 d-flex justify-content-end">
+            <img
+              class="arrow"
+              height="100px"
+              src="./assests/arrow.png"
+              alt=""
+              data-aos="fade-up"
+            />
+          </div>
+          <div class="col-lg-3 d-flex">
+            <div
+              class="step w-100 d-flex align-items-center shadow p-3 mb-5 bg-body-tertiary rounded gap-3 animated fadeInUp delay-4s"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="step-icon">
+                <img src="./assests/track1.png" alt="" />
+              </div>
+              <div class="step-desc">
+                <h3 class="fw-bold fs-3">Track</h3>
+                <p class="card-text">
+                  Get complete view of your shipment status.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <h2 class="fw-bold fs-1 text-center mb-5">
+          <span class="text-p"> The FreightJar</span> Difference
+        </h2>
+
+        <div class="row">
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
+              <div class="p-3">
+                <div class="card-heading d-flex align-items-center gap-2">
+                  <img src="./assests/save time.png" alt="" />
+                  <h3 class="fw-bold fs-3">Save Time & Money</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">
+                    Save upto 70% Logistics cost & 4-5 working Days with choice
+                    of multiple rates.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
+              <div class="p-3">
+                <div class="card-heading d-flex align-items-center gap-2">
+                  <img src="./assests/no chaos.png" alt="" />
+                  <h3 class="fw-bold fs-3">No Chaos & Confusion</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">
+                    Fully Transparent process with cost breakup, notifications
+                    and information about partners.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
+              <div class="p-3">
+                <div class="card-heading d-flex align-items-center gap-2">
+                  <img src="./assests/easy to use.png" alt="" />
+                  <h3 class="fw-bold fs-3">Easy to Use</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">
+                    Enhanced UI with multilingual options allowing you to access
+                    all information at one place.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
+              <div class="p-3">
+                <div class="card-heading d-flex align-items-center gap-2">
+                  <img src="./assests/intelligent visibility.png" alt="" />
+                  <h3 class="fw-bold fs-3">Intelligent Visibility</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">
+                    Be in full control of your shipments from factory to
+                    destination and get informed of any delays/ demurrage.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
+              <div class="p-3">
+                <div class="card-heading d-flex align-items-center gap-2">
+                  <img src="./assests/minimal paper work.png" alt="" />
+                  <h3 class="fw-bold fs-3">Minimal Paperwork</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">
+                    Avoid the paperwork with our digital documentation dashboard
+                    and help reduce waste and clutter
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="shadow p-2 mb-3 bg-body-tertiary rounded">
+              <div class="p-3">
+                <div class="card-heading d-flex align-items-center gap-2">
+                  <img src="./assests/relationship manager.png" alt="" />
+                  <h3 class="fw-bold fs-3">Relationship Managers</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">
+                    Plan & Secure each step of your booking with a dedicated
+                    manager to help plan and execute your shipments
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <h2 class="fw-bold fs-1 text-center mb-5">
+          <span class="text-p"> Our Brand</span> Certifications & Accreditations
+        </h2>
+
+        <div class="row d-flex align-items-center justify-content-between">
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center"
+            data-aos="fade-up"
+          >
+            <img src="./assests/aeo.png" class="img-fluid" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <img src="./assests/iata.png" class="img-fluid" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <img src="./assests/jctrans.png" class="img-fluid" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <img src="./assests/iso.png" class="img-fluid" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="container my-5 py-5 animated fadeIn" data-aos="fade-up">
+        <h2 class="fw-bold fs-1 text-center mb-5">
+          <span class="text-p"> Multi-Industry</span> Experience
+        </h2>
+
+        <div class="row d-flex align-items-center justify-content-between">
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+          >
+            <img src="./assests/automobiles.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <img src="./assests/power.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <img src="./assests/electonics.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <img src="./assests/white goods.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <img src="./assests/textiles.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <img src="./assests/food and agri.png" alt="" />
+          </div>
+        </div>
+        <div class="row d-flex align-items-center justify-content-between">
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+          >
+            <img src="./assests/RenewableEnergy.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <img src="./assests/Plastic.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <img src="./assests/Ceramics.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <img src="./assests/Pharmaceuticals.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <img src="./assests/BuilingMaterials.png" alt="" />
+          </div>
+          <div
+            class="col-md-2 col-6 d-flex flex-column justify-content-center p-2"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <img src="./assests/MachineryEngeering.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="container my-5 py-5 cta rounded-4 animated fadeIn"
+        data-aos="fade-up"
+        style="width: 95%"
+      >
+        <h2 class="fw-bold fs-1 text-center mb-5 text-white">
+          <span class="text-p">Book & Manage</span> Your <br />First Shipment
+          with FreightJar
+        </h2>
+
+        <div
+          class="px-4 row mt-5 mb-2 flex-column flex-sm-row d-flex align-items-center justify-content-around"
+        >
+          <a
+            href="https://app.freightjar.com/"
+            target="_blank"
+            class="col-md-3 col mt-5 btn btn-light cta-btn btn-lg px-5 py-3 rounded-4"
+            >Schedule a Demo</a
+          >
+          <a
+            href="https://app.freightjar.com/"
+            target="_blank"
+            class="col-md-3 col mt-5 btn btn-light cta-btn btn-lg px-5 py-3 rounded-4"
+            >Create a Free Account</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container-fluid f-top">
+        <div class="container py-5">
+          <div class="row">
+            <div class="col">
+              <form>
+                <h3 class="fs-2 text-center fw-bold">
+                  Stay Updated by Subscribing to Our Newsletter
+                </h3>
+                <div class="d-flex flex-column flex-sm-row gap-2 py-3">
+                  <label for="newsletter1" class="visually-hidden"
+                    >First Name</label
+                  >
+                  <input
+                    id="newsletter1"
+                    type="text"
+                    class="form-control nw"
+                    placeholder="First Name"
+                  />
+                  <label for="newsletter1" class="visually-hidden"
+                    >Last Name</label
+                  >
+                  <input
+                    id="newsletter1"
+                    type="text"
+                    class="form-control nw"
+                    placeholder="Last Name"
+                  />
+                  <label for="newsletter1" class="visually-hidden"
+                    >Email Address</label
+                  >
+                  <input
+                    id="newsletter1"
+                    type="email"
+                    class="form-control nw"
+                    placeholder="Email Address"
+                  />
+                  <button class="btn btn-dark" type="button">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid f-bottom py-2 d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-between">
+            <div class="col-md-6">
+              <p class="text-white">
+                &copy; 2024 FreightJar. All Rights Reserved
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-white">
+                A Proprietary Product by Tiger Logistics (India) Ltd
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/owl.carousel.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <!-- ------- script for By Default Air active when page load ----------- -->
+    <script>
+      window.addEventListener("load", (event) => {
+        // Trigger a click event on the "AIR" option
+        document.getElementById("fclActive").click();
+      });
+    </script>
+
+    <!-- ------------ import external Script files --------------- -->
+    <script src="/assests/js/data.js"></script>
+    <!-- <script src="/assests/js/port-data.js"></script>
+  <script src="/assests/js/airport-data.js"></script> -->
+    <script src="/assests/js/create-customer.js"></script>
+    <script src="/assests/js/script.js"></script>
+    <script src="/assests/js/container-type-data.js"></script>
+
+    <!-- ------------ script for Google Exacle Sheet --------------- -->
+    <script>
+      const form = document.querySelector("#portsSearchContainer");
+      const submitButton = document.querySelector("#submit");
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyPq0AsPsPUp-XH93aI3dvDO5l5KSlEb2lrCCuQRkLyggL2SDiz9W5SatZCyms-tR-e/exec";
+
+      form.addEventListener("submit", (e) => {
+        submitButton.disabled = true;
+        e.preventDefault();
+        let requestBody = new FormData(form);
+        fetch(scriptURL, { method: "POST", body: requestBody })
+          .then((response) => {
+            alert("Success!", response);
+            submitButton.disabled = false;
+          })
+          .catch((error) => {
+            alert("Error!", error.message);
+            submitButton.disabled = false;
+          });
+      });
+    </script>
+  </body>
+</html>

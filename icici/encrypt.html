@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freight Jar</title>
+     <link rel="icon" type="image/x-icon" href="/assests/favicon.ico">
+        <!-- Microsoft Clarity Code  -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "mmnbp39u5l");
+</script>
+  </head>
+  <body>
+    <form id="enterEncryptedString">
+      <label for="encryptedString">Enter Encrypted String:</label><br />
+      <input
+        type="text"
+        id="encryptedString"
+        name="encryptedString"
+      /><br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("enterEncryptedString")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let encryptedString =
+            document.getElementById("encryptedString").value;
+          // Redirect to decrypt.html with the encrypted string as a URL parameter
+          window.location.href =
+            "icicisignup.html?QueryString=" +
+            encodeURIComponent(encryptedString);
+        });
+    </script>
+  </body>
+</html>
